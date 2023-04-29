@@ -3,10 +3,18 @@ using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEditor;
 
+public abstract class SpawningStrategy : MonoBehaviour
+{
+    public abstract T Spawn<T>(T template) where T : Object;
+    public abstract T Spawn<T>(T template, Transform parent) where T : Object;
+}
+
 public class IslandsGenerator : MonoBehaviour
 {
     [SerializeField]
     private IslandSettings settings;
+    [SerializeField]
+    private SpawningStrategy spawningStrategy;
     [SerializeField]
     private IslandCell islandCellTemplate;
     [SerializeField]
@@ -26,7 +34,7 @@ public class IslandsGenerator : MonoBehaviour
     private void Generate()
     {
         tempCells.Clear();
-        Island island = PrefabUtility.InstantiatePrefab(islandTemplate, transform) as Island; //Instantiate(islandTemplate, Random.insideUnitCircle * 10, Quaternion.identity, transform);
+        Island island = spawningStrategy.Spawn(islandTemplate, transform);
         island.transform.localPosition = Random.insideUnitCircle * 20;
         int cellsCount = Random.Range(settings.MinCellsCount, settings.MaxCellsCount);
         for (int i = 0; i < cellsCount; i++)
@@ -43,7 +51,7 @@ public class IslandsGenerator : MonoBehaviour
         float beachRadius = Random.Range(settings.MinCellRadius, settings.MaxCellRadius);
         float grassRadius = beachRadius * Random.Range(settings.MinCellGrassRelativeRadius, settings.MaxCellGrassRelativeRadius);
 
-        var cell = PrefabUtility.InstantiatePrefab(islandCellTemplate, island) as IslandCell; //Instantiate(islandCellTemplate, island);
+        var cell = spawningStrategy.Spawn(islandCellTemplate, island);
         cell.transform.localPosition = position;
         var beachData = cell.Beach;
         beachData.Radius = beachRadius;
