@@ -195,10 +195,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 365719000108198333}
     m_Modifications:
+    - target: {fileID: 1112925312139581252, guid: 00fa9eba8e7057c4a87f6c148f7dfbe4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 97362c8821fe2f7449927570ad6d4d6a, type: 3}
+    - target: {fileID: 1313550692442563219, guid: 00fa9eba8e7057c4a87f6c148f7dfbe4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 97362c8821fe2f7449927570ad6d4d6a, type: 3}
     - target: {fileID: 1972876874014792107, guid: 00fa9eba8e7057c4a87f6c148f7dfbe4, type: 3}
       propertyPath: m_Name
       value: Item Icon
       objectReference: {fileID: 0}
+    - target: {fileID: 5185789479819301058, guid: 00fa9eba8e7057c4a87f6c148f7dfbe4, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 97362c8821fe2f7449927570ad6d4d6a, type: 3}
     - target: {fileID: 8587455700027224390, guid: 00fa9eba8e7057c4a87f6c148f7dfbe4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

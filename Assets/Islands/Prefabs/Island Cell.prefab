@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4559052730722186684}
   - component: {fileID: 7062636569456162167}
   - component: {fileID: 2645656695882016141}
+  - component: {fileID: 847295880072577775}
   m_Layer: 0
   m_Name: Beach
   m_TagString: Untagged
@@ -99,6 +100,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.35
+--- !u!114 &847295880072577775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881038300293792945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a94f027a60b0439429b546013992fec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1283567855508379915
 GameObject:
   m_ObjectHideFlags: 0

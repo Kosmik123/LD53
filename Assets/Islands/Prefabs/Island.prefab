@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1929678109086682152}
   - component: {fileID: 7470415839122942472}
+  - component: {fileID: 6843749665363639078}
+  - component: {fileID: 7485183875664360636}
   m_Layer: 0
   m_Name: Island
   m_TagString: Untagged
@@ -45,6 +47,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cells: []
+--- !u!114 &6843749665363639078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4473825334968420769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94e3003384a8de4e988c52d648ccb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 0bcefe0efbfb9284b9cbf850b3b69205, type: 2}
+  island: {fileID: 7470415839122942472}
+  progressLoader: {fileID: 7485183875664360636}
+  collisionEvents: []
+--- !u!114 &7485183875664360636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4473825334968420769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de4e2452e75962346a399386bb385c53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingSpeed: 0.2
 --- !u!1 &4981859428675949095
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,6 +190,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 8316799455626307946}
+  itemIcon: {fileID: 3154749153843697728}
+  itemSource: {fileID: 6843749665363639078}
+  progressLoader: {fileID: 7485183875664360636}
 --- !u!1001 &8715226173675054954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -261,3 +295,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 365719000108198333, guid: 8582c8ffe2128a44e88502e7d1903e25, type: 3}
   m_PrefabInstance: {fileID: 8715226173675054954}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3154749153843697728 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5995803635102514986, guid: 8582c8ffe2128a44e88502e7d1903e25, type: 3}
+  m_PrefabInstance: {fileID: 8715226173675054954}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fca6a0c70be7e4db8f48d039ff7f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

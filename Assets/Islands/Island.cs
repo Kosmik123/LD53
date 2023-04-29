@@ -1,11 +1,13 @@
-﻿using NaughtyAttributes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Island : MonoBehaviour
 {
+    public event System.Action<Island> OnIslandCreated;
+
     [SerializeField]
     private IslandCell[] cells;
+    public IReadOnlyList<IslandCell> Cells => cells;
 
     [ContextMenu("Clear")]
     private void ClearInEditor()
@@ -24,5 +26,6 @@ public class Island : MonoBehaviour
             this.cells[i] = cells[i];
             cells[i].transform.parent = transform;
         }
+        OnIslandCreated?.Invoke(this);
     }
 }
