@@ -202,7 +202,7 @@ Rigidbody2D:
   m_LinearDrag: 4
   m_AngularDrag: 0.5
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 691602cd580f7e2448f85f66442d70cf, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -221,8 +221,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 474948035874188301}
   inputProvider: {fileID: 474948035874188302}
-  maxSpeed: 8
-  force: 8
+  maxSpeed: 3
+  force: 3
   backForceMultiplier: 0.6
   forwardDrag: 1
   backDrag: 2
