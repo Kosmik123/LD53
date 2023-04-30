@@ -5,7 +5,6 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory Instance { get; private set; }
 
-
     public event System.Action<Item> OnItemAdded;
     public event System.Action<Item> OnItemRemoved;
 
@@ -14,6 +13,7 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     private int capacity;
+    public int Capacity => capacity;
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class Inventory : MonoBehaviour
 
     public bool Add(Item item)
     {
-        if (items.Count >= capacity)
+        if (items.Count >= Capacity)
             return false;
 
         items.Add(item);
