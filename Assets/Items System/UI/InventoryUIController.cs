@@ -24,14 +24,14 @@ public class InventoryUIController : MonoBehaviour
         inventory.OnItemAdded += Inventory_OnItemAdded;
     }
 
-    private void Inventory_OnItemAdded(Item obj)
+    private void Inventory_OnItemAdded(Item item)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     private void OnDisable()
     {
-        
+        inventory.OnItemAdded -= Inventory_OnItemAdded;
     }
 
     private void ActiveInventorySlot()

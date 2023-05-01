@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
-  itemWindow:
+  itemSlots:
   - {fileID: 5612577900606544303}
   - {fileID: 3487619678442900908}
   - {fileID: 5943934244288996542}
@@ -146,6 +146,8 @@ MonoBehaviour:
   - {fileID: 4710563956260588057}
   - {fileID: 4994085161301221042}
   - {fileID: 889905169683236449}
+  newItemWindowCapacity: 0
+  currentItemWindowCapacity: 0
 --- !u!1001 &2429478278985137573
 PrefabInstance:
   m_ObjectHideFlags: 0
