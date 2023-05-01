@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8680388233664286577}
   - component: {fileID: 8680388233664286605}
   - component: {fileID: 8680388233664286606}
+  - component: {fileID: 1361881604745007781}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -62,7 +63,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 11.46
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -126,8 +127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 8680388233664286576}
   axisProvider: {fileID: 8680388233664286606}
-  minSize: 4
-  maxSize: 16
+  minSize: 3
+  maxSize: 15
   zoomSpeed: -5
 --- !u!114 &8680388233664286606
 MonoBehaviour:
@@ -143,3 +144,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axis: Mouse ScrollWheel
   rawInput: 0
+--- !u!114 &1361881604745007781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8680388233664286579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d234ad55579a2284b9c1be452f513773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 8680388233664286576}
+  parentConstraint: {fileID: 8680388233664286577}
+  zoomController: {fileID: 8680388233664286605}
+  movementLimiter: {fileID: 0}

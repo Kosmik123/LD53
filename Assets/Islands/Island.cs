@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using NaughtyAttributes;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Island : MonoBehaviour
@@ -8,6 +9,15 @@ public class Island : MonoBehaviour
     [SerializeField]
     private IslandCell[] cells;
     public IReadOnlyList<IslandCell> Cells => cells;
+
+    [field: ShowNonSerializedField, ReadOnly]
+    public bool IsInited { get; private set; } = false;
+
+    private void Start()
+    {
+        if (IsInited == false)
+            Init(GetComponentsInChildren<IslandCell>());
+    }
 
     [ContextMenu("Clear")]
     private void ClearInEditor()
@@ -26,6 +36,7 @@ public class Island : MonoBehaviour
             this.cells[i] = cells[i];
             cells[i].transform.parent = transform;
         }
+        IsInited = true;
         OnIslandCreated?.Invoke(this);
     }
 }

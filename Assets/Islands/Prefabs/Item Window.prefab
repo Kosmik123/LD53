@@ -70,8 +70,8 @@ RectTransform:
   m_Father: {fileID: 365719000108198333}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.05, y: 0.05}
-  m_AnchorMax: {x: 0.95, y: 0.95}
+  m_AnchorMin: {x: 0.02, y: 0.02}
+  m_AnchorMax: {x: 0.98, y: 0.98}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -103,8 +103,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -171,15 +171,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -225,19 +225,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8587455700027224390, guid: 00fa9eba8e7057c4a87f6c148f7dfbe4, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.9
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 8587455700027224390, guid: 00fa9eba8e7057c4a87f6c148f7dfbe4, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.9
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 8587455700027224390, guid: 00fa9eba8e7057c4a87f6c148f7dfbe4, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.1
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 8587455700027224390, guid: 00fa9eba8e7057c4a87f6c148f7dfbe4, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.1
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 8587455700027224390, guid: 00fa9eba8e7057c4a87f6c148f7dfbe4, type: 3}
       propertyPath: m_SizeDelta.x

@@ -22,6 +22,21 @@ public class IslandsGenerator : MonoBehaviour
 
     private List<IslandCell> tempCells = new List<IslandCell>();
 
+    public Island GenerateIsland(Vector3 position)
+    {
+        tempCells.Clear();
+        Island island = spawningStrategy.Spawn(islandTemplate, transform);
+        island.transform.localPosition = position;
+        int cellsCount = Random.Range(settings.MinCellsCount, settings.MaxCellsCount);
+        for (int i = 0; i < cellsCount; i++)
+        {
+            var cell = GenerateCell(island.transform);
+            tempCells.Add(cell);
+        }
+        island.Init(tempCells);
+        return island;
+    }
+
     [Button]
     private void Clear()
     {
@@ -33,16 +48,7 @@ public class IslandsGenerator : MonoBehaviour
     [Button]
     private void Generate()
     {
-        tempCells.Clear();
-        Island island = spawningStrategy.Spawn(islandTemplate, transform);
-        island.transform.localPosition = Random.insideUnitCircle * 20;
-        int cellsCount = Random.Range(settings.MinCellsCount, settings.MaxCellsCount);
-        for (int i = 0; i < cellsCount; i++)
-        {
-            var cell = GenerateCell(island.transform);
-            tempCells.Add(cell);
-        }
-        island.Init(tempCells);
+        GenerateIsland(Random.insideUnitCircle * 20);
     }
 
     private IslandCell GenerateCell(Transform island)

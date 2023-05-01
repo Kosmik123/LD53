@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1781354826444609100, guid: b63bef1be5dbeca448d9aab9e4bd5200, type: 3}
+      propertyPath: shouldCommisionAtStart
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1929678109086682152, guid: b63bef1be5dbeca448d9aab9e4bd5200, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -51,9 +55,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1953593428986149316, guid: b63bef1be5dbeca448d9aab9e4bd5200, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953593428986149316, guid: b63bef1be5dbeca448d9aab9e4bd5200, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953593428986149316, guid: b63bef1be5dbeca448d9aab9e4bd5200, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953593428986149316, guid: b63bef1be5dbeca448d9aab9e4bd5200, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953593428986149316, guid: b63bef1be5dbeca448d9aab9e4bd5200, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953593428986149316, guid: b63bef1be5dbeca448d9aab9e4bd5200, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953593428986149316, guid: b63bef1be5dbeca448d9aab9e4bd5200, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953593428986149316, guid: b63bef1be5dbeca448d9aab9e4bd5200, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4473825334968420769, guid: b63bef1be5dbeca448d9aab9e4bd5200, type: 3}
       propertyPath: m_Name
-      value: Island
+      value: Predefined Island
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843749665363639078, guid: b63bef1be5dbeca448d9aab9e4bd5200, type: 3}
+      propertyPath: item
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b63bef1be5dbeca448d9aab9e4bd5200, type: 3}

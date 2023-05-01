@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Bipolar.Core.Input;
 using Bipolar.Core;
 #if NAUGHTY_ATTRIBUTES
 using NaughtyAttributes;

@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class IslandItemSource : MonoBehaviour
 {
+    public event System.Action<Item> OnItemSet;
+    public event System.Action<Item> OnItemCollected;
+
     [SerializeField]
     private Item item;
     public Item Item => item;
@@ -11,11 +14,29 @@ public class IslandItemSource : MonoBehaviour
     [SerializeField]
     private ProgressLoader progressLoader;
     [SerializeField]
-    private OnCollision2DEnterEvent[] collisionEvents;
+    private IslandCollisionDetector collisionDetector;
 
     private void Awake()
     {
-        island.OnIslandCreated += PopulateCollisionEvents;
+        if (island.IsInited)
+            PopulateCollisionEvents(island);
+        else
+            island.OnIslandCreated += PopulateCollisionEvents;
+    }
+
+    private void OnEnable()
+    {
+        collisionDetector.OnCollisionEntered += CollisionDetector_OnCollisionEntered;
+    }
+    private void Start()
+    {
+        progressLoader.Progress = 1;
+        if (item == null)
+        {
+            int index = Random.Range(0, ItemsData.Instance.AllItems.Length);
+            item = ItemsData.Instance.AllItems[index];
+            OnItemSet?.Invoke(item);
+        }
     }
 
     private void PopulateCollisionEvents(Island island)
@@ -29,14 +50,13 @@ public class IslandItemSource : MonoBehaviour
             if (collisionEvent != null)
             {
                 collisionEventsList.Add(collisionEvent);
-                collisionEvent.OnCollisionEntered += CollisionEvent_OnCollisionEntered;
             }
         }
 
-        collisionEvents = collisionEventsList.ToArray();
+        collisionDetector.CollisionEvents = collisionEventsList.ToArray();
     }
 
-    private void CollisionEvent_OnCollisionEntered(Collision2D collision)
+    private void CollisionDetector_OnCollisionEntered(Collision2D collision)
     {
         if (progressLoader.IsReady == false)
             return;
@@ -45,17 +65,13 @@ public class IslandItemSource : MonoBehaviour
         if (added)
         {
             progressLoader.Progress = 0;
+            OnItemCollected?.Invoke(item);
         }
     }
 
-    private void Start()
+    private void OnDisable()
     {
-        progressLoader.Progress = 1;
+        collisionDetector.OnCollisionEntered -= CollisionDetector_OnCollisionEntered;
     }
 
-    private void OnDestroy()
-    {
-        foreach (var collisionEvent in collisionEvents)
-            collisionEvent.OnCollisionEntered -= CollisionEvent_OnCollisionEntered;
-    }
 }

@@ -36,6 +36,11 @@ public class OrthographicCameraZoomController : MonoBehaviour
         currentZoom = camera.orthographicSize;
     }
 
+    private void OnEnable()
+    {
+        currentZoom = camera.orthographicSize;
+    }
+
     private void Update()
     {
         currentZoom += zoomSpeed * AxisProvider.GetAxis();

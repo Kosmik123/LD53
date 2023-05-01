@@ -45,8 +45,7 @@ public class ShipMovement : Rigidbody2DMovement
     private void Update()
     {
         throttle = InputProvider.GetVertical();
-        CalculateDrag();
-        rigidbody.drag = drag;
+        UpdateDrag();
 
         float currentMaxForce = Mathf.Max(0, (throttle * maxSpeed * (Vector2)transform.up - rigidbody.velocity).magnitude / Time.deltaTime);
         currentForce = Mathf.Min(currentMaxForce, force);
@@ -55,11 +54,12 @@ public class ShipMovement : Rigidbody2DMovement
         shipRotation.RotateSpeed = Mathf.Lerp(minRotateSpeed, maxRotateSpeed, force == 0 ? 0.5f : rigidbody.velocity.magnitude / maxSpeed);
     }
 
-    private void CalculateDrag()
+    private void UpdateDrag()
     {
         streamlinedness = Vector2.Dot(rigidbody.velocity.normalized, transform.up);
         longitudinalDrag = streamlinedness < 0 ? backDrag : forwardDrag;
-        drag = Mathf.Lerp(transversalDrag, longitudinalDrag, streamlinedness) - forwardDrag * Mathf.Abs(throttle);
+        drag = Mathf.Lerp(transversalDrag, longitudinalDrag, Mathf.Abs(streamlinedness)) - forwardDrag * Mathf.Abs(throttle);
+        rigidbody.drag = drag;
     }
 
     private void FixedUpdate()
