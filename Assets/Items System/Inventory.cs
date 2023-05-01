@@ -48,7 +48,7 @@ public class Inventory : MonoBehaviour
         return RemoveItem(itemIndex);
     }
 
-    public bool RemoveItem(int itemIndex)
+    private bool RemoveItem(int itemIndex)
     {
         var item = items[itemIndex];
         items.RemoveAt(itemIndex);

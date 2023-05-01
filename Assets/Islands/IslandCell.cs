@@ -27,18 +27,6 @@ public class IslandCell : MonoBehaviour
     }
 
     [SerializeField]
-    private CircularArea beach;
-    public CircularArea Beach
-    {
-        get => beach;
-        set
-        {
-            beach = value;
-            beach.Validate();
-        }
-    }
-
-    [SerializeField]
     private CircularArea grass;
     public CircularArea Grass
     {
@@ -50,9 +38,35 @@ public class IslandCell : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private CircularArea beach;
+    public CircularArea Beach
+    {
+        get => beach;
+        set
+        {
+            beach = value;
+            beach.Validate();
+        }
+    }
+
+
+    [SerializeField]
+    private CircularArea laguna;
+    public CircularArea Laguna
+    {
+        get => laguna;
+        set
+        {
+            laguna = value;
+            laguna.Validate();
+        }
+    }
+
     private void OnValidate()
     {
         beach.Validate();
         grass.Validate();
+        laguna.Validate();
     }
 }

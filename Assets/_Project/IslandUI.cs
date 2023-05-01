@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class IslandUI : MonoBehaviour
@@ -14,15 +15,17 @@ public class IslandUI : MonoBehaviour
     private void Awake()
     {
         canvas.worldCamera = Camera.main;
+        itemSource.OnItemSet += SetItem;
+    }
+
+    private void SetItem(Item item)
+    {
+        itemSource.OnItemSet -= SetItem;
+        itemIcon.Sprite = item.Icon;
     }
 
     private void Update()
     {
         itemIcon.Progress = progressLoader.Progress;
-    }
-
-    private void Start()
-    {
-        itemIcon.Sprite = itemSource.Item.Icon;
     }
 }

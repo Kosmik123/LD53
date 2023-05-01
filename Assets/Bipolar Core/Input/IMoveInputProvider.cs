@@ -1,5 +1,5 @@
 ﻿
-namespace Bipolar.Core
+namespace Bipolar.Core.Input
 {
     public interface IMoveInputProvider
     {

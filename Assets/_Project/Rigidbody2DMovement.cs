@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Bipolar.Core;
+using Bipolar.Core.Input;
 using NaughtyAttributes;
 
 public class Rigidbody2DMovement : MonoBehaviour
