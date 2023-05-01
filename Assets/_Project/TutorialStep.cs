@@ -6,12 +6,19 @@ public abstract class TutorialStep : MonoBehaviour
     [SerializeField]
     private TutorialStepCompletionChecker completionChecker;
 
+    private void Awake()
+    {
+        completionChecker.enabled = false;
+    }
+
     public void Begin()
     {
+        completionChecker.enabled = true;
         OnBegin();
     }
 
     protected virtual void OnBegin() { }
+    
     public virtual bool IsCompleted()
     {
         return completionChecker.IsCompleted();
@@ -21,7 +28,7 @@ public abstract class TutorialStep : MonoBehaviour
 
     public void End()
     {
+        completionChecker.enabled = false;
         OnEnd();
     }
-
 }

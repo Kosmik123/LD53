@@ -45,9 +45,6 @@ public class ItemIcon : MonoBehaviour
         loadedImage.enabled = unloadedImage.enabled = false;
     }
 
-
-
-
     private void OnValidate()
     {
         Validate();

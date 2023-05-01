@@ -21,6 +21,7 @@ public class BubbleAnimator : MonoBehaviour
     {
         rectTransform = (RectTransform)transform;
         allImages = GetComponentsInChildren<Image>();
+        Hide(0);
     }
 
     [Button]
@@ -44,12 +45,12 @@ public class BubbleAnimator : MonoBehaviour
     }
 
     [Button]
-    public void Hide()
+    public void Hide(float duration = 0.2f)
     {
         CancelInvoke(nameof(Shake));
         var animation = DOTween.Sequence();
         for (int i = 0; i < allImages.Length; i++)
-            animation.Join(allImages[i].DOFade(0, 0.2f));
+            animation.Join(allImages[i].DOFade(0, duration));
 
         animation.OnComplete(DeactivateObject);
     }

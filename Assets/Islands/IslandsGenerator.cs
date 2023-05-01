@@ -59,13 +59,19 @@ public class IslandsGenerator : MonoBehaviour
 
         var cell = spawningStrategy.Spawn(islandCellTemplate, island);
         cell.transform.localPosition = position;
-        var beachData = cell.Beach;
-        beachData.Radius = beachRadius;
-        cell.Beach = beachData;
+
         var grassData = cell.Grass;
         grassData.Radius = grassRadius;
         cell.Grass = grassData;
-        
+
+        var beachData = cell.Beach;
+        beachData.Radius = beachRadius;
+        cell.Beach = beachData;
+
+        var lagunaData = cell.Laguna;
+        lagunaData.Radius = beachRadius * 2;
+        cell.Laguna = lagunaData;
+
         return cell;
     }
 }

@@ -35,8 +35,8 @@ public class IslandItemSource : MonoBehaviour
         {
             int index = Random.Range(0, ItemsData.Instance.AllItems.Length);
             item = ItemsData.Instance.AllItems[index];
-            OnItemSet?.Invoke(item);
         }
+        OnItemSet?.Invoke(item);
     }
 
     private void PopulateCollisionEvents(Island island)

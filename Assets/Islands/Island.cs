@@ -13,6 +13,20 @@ public class Island : MonoBehaviour
     [field: ShowNonSerializedField, ReadOnly]
     public bool IsInited { get; private set; } = false;
 
+    [ShowNonSerializedField, ReadOnly]
+    private bool isVisible;
+    public bool IsVisible
+    {
+        get => isVisible;
+        set
+        {
+            isVisible = value;
+            if (isVisible && gameObject.activeSelf == false)
+                gameObject.SetActive(true);
+        }
+    }
+
+
     private void Start()
     {
         if (IsInited == false)
@@ -38,5 +52,11 @@ public class Island : MonoBehaviour
         }
         IsInited = true;
         OnIslandCreated?.Invoke(this);
+    }
+
+    private void LateUpdate()
+    {
+        if (isVisible == false)
+            gameObject.SetActive(false);
     }
 }

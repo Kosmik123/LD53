@@ -56,9 +56,8 @@ public class IslandItemDemandController : MonoBehaviour
         OnItemDemanded?.Invoke(demandedItem);
     }
 
-
     [Button]
-    private void DemandRandomItem()
+    public void DemandRandomItem()
     {
         int index = Random.Range(0, possibleItems.Count);
         DemandItem(possibleItems[index]);
@@ -71,11 +70,10 @@ public class IslandItemDemandController : MonoBehaviour
 
         Inventory.Instance.RemoveItem(demandedItem);
         EndDemand();
-
         CommissionNextDemand(minWaitDuration); 
     }
 
-    private void CommissionNextDemand(float minWaitDuration)
+    public void CommissionNextDemand(float minWaitDuration)
     {
         float timeToNextDemand = Random.Range(minWaitDuration, maxWaitDuration);
         Invoke(nameof(DemandRandomItem), timeToNextDemand);

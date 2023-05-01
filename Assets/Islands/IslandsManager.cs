@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using NaughtyAttributes;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class IslandsManager : MonoBehaviour
@@ -9,8 +10,15 @@ public class IslandsManager : MonoBehaviour
     private Vector2 chunkSize;
     [SerializeField]
     private Transform observer;
+    [SerializeField]
+    private Camera viewCamera;
+    [SerializeField, Range(0,1)]
+    private float spawnIslandProbability;
 
     private Dictionary<Vector2Int, Island> islandsByPosition;
+
+    [SerializeField, ReadOnly]
+    private readonly List<Vector2Int> positionsVisibleLastFrame = new List<Vector2Int>();
 
     private void Awake()
     {
@@ -43,6 +51,49 @@ public class IslandsManager : MonoBehaviour
                 var position = new Vector2Int(i, j);
                 if (islandsByPosition.ContainsKey(position) == false)
                     islandsByPosition.Add(position, null);
+            }
+        }
+    }
+
+    private void Update()
+    {
+        foreach (var position in positionsVisibleLastFrame)
+            if (islandsByPosition.TryGetValue(position, out var island))
+                if (island != null)
+                    island.IsVisible = false;
+
+        positionsVisibleLastFrame.Clear();
+
+        float yExtent = viewCamera.orthographicSize;
+        float xExtent = yExtent * viewCamera.aspect;
+        Vector2 observerPosition = observer.position;
+
+        Vector2Int start = WorldToGrid(new Vector2(
+            Mathf.Floor(observerPosition.x - xExtent),
+            Mathf.Floor(observerPosition.y - yExtent)));
+
+        Vector2Int end = WorldToGrid(new Vector2(
+            Mathf.Ceil(observerPosition.x + xExtent),
+            Mathf.Ceil(observerPosition.y + yExtent)));
+
+        for (int j = start.y - 1; j <= end.y + 1; j++)
+        {
+            for (int i = start.x - 1; i <= end.x + 1; i++)
+            {
+                var position = new Vector2Int(i, j);
+                positionsVisibleLastFrame.Add(position);
+                if (islandsByPosition.TryGetValue(position, out var island))
+                {
+                    if (island != null)
+                        island.IsVisible = true;
+                }
+                else
+                {
+                    if (Random.value < spawnIslandProbability)
+                        GenerateIsland(position);
+                    else
+                        islandsByPosition.Add(position, null);
+                }
             }
         }
     }
