@@ -114,9 +114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f91945c1fc5f6a40a2098d7550aa42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  componentsToDisableAtGameover: []
   points: 0
   fuel: 1
   fuelLoweringSpeed: 0
+  fuelHealingValue: 0.5
   islands: []
 --- !u!114 &1418071358680153221
 MonoBehaviour:

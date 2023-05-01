@@ -6092,7 +6092,7 @@ MonoBehaviour:
   chunkSize: {x: 10, y: 10}
   observer: {fileID: 891965805}
   viewCamera: {fileID: 813160217}
-  spawnIslandProbability: 0.4
+  spawnIslandProbability: 0.6
   playerStatsController: {fileID: 4312278132210966684}
 --- !u!1001 &1994219983
 PrefabInstance:
@@ -6749,6 +6749,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 7097971076795593395, guid: 3a354f61325bdb841ba4ffd021ebee1e, type: 3}
+      propertyPath: ship
+      value: 
+      objectReference: {fileID: 875093435}
+    - target: {fileID: 7097971076795593395, guid: 3a354f61325bdb841ba4ffd021ebee1e, type: 3}
+      propertyPath: componentsToDisableAtGameover.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7097971076795593395, guid: 3a354f61325bdb841ba4ffd021ebee1e, type: 3}
+      propertyPath: componentsToDisableAtGameover.Array.data[0]
+      value: 
+      objectReference: {fileID: 875093435}
+    - target: {fileID: 7097971076795593395, guid: 3a354f61325bdb841ba4ffd021ebee1e, type: 3}
+      propertyPath: componentsToDisableAtGameover.Array.data[1]
+      value: 
+      objectReference: {fileID: 813160214}
     - target: {fileID: 8152907926730101885, guid: 3a354f61325bdb841ba4ffd021ebee1e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -7040,6 +7056,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2199812022365310745, guid: d835741588f1b60428e8ddec8b9247c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199812022365310745, guid: d835741588f1b60428e8ddec8b9247c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199812022365310745, guid: d835741588f1b60428e8ddec8b9247c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4312278132210966684}
+    - target: {fileID: 2199812022365310745, guid: d835741588f1b60428e8ddec8b9247c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199812022365310745, guid: d835741588f1b60428e8ddec8b9247c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199812022365310745, guid: d835741588f1b60428e8ddec8b9247c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerStatsController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199812022365310745, guid: d835741588f1b60428e8ddec8b9247c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5826871060511919594, guid: d835741588f1b60428e8ddec8b9247c2, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
