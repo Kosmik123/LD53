@@ -53,6 +53,7 @@ public class PlayerStatsController : MonoBehaviour
         {
             points++;
             fuel = 1;
+            fuelLoweringSpeed *= 1.1f;
             OnPointsChanged?.Invoke(points);
         }
     }
