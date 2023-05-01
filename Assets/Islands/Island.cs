@@ -5,6 +5,8 @@ using UnityEngine;
 public class Island : MonoBehaviour
 {
     public event System.Action<Island> OnIslandCreated;
+    public event System.Action<bool> OnVisibilityChanged;
+
 
     [SerializeField]
     private IslandCell[] cells;
@@ -20,9 +22,15 @@ public class Island : MonoBehaviour
         get => isVisible;
         set
         {
-            isVisible = value;
-            if (isVisible && gameObject.activeSelf == false)
-                gameObject.SetActive(true);
+            if (isVisible != value)
+            {
+                isVisible = value;
+                if (isVisible && gameObject.activeSelf == false)
+                {
+                    gameObject.SetActive(true);
+                    OnVisibilityChanged?.Invoke(true);
+                }
+            }
         }
     }
 
@@ -57,6 +65,9 @@ public class Island : MonoBehaviour
     private void LateUpdate()
     {
         if (isVisible == false)
+        {
             gameObject.SetActive(false);
+            OnVisibilityChanged?.Invoke(false);
+        }
     }
 }

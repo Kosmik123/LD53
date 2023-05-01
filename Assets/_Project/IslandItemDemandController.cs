@@ -29,6 +29,23 @@ public class IslandItemDemandController : MonoBehaviour
     [SerializeField, ReadOnly]
     private List<Item> possibleItems;
 
+    private void Awake()
+    {
+        islandItemSource.Island.OnVisibilityChanged += Island_OnVisibilityChanged;
+    }
+
+    private void Island_OnVisibilityChanged(bool isVisible)
+    {
+        if (isVisible) 
+        {
+            CommissionNextDemand(minWaitDuration: 1);
+        }
+        else
+        {
+            EndDemand();
+        }
+    }
+
     private void OnEnable()
     {
         collisionDetector.OnCollisionEntered += TryCollectItem;
@@ -90,5 +107,10 @@ public class IslandItemDemandController : MonoBehaviour
     private void OnDisable()
     {
         collisionDetector.OnCollisionEntered -= TryCollectItem;
+    }
+
+    private void OnDestroy()
+    {
+        islandItemSource.Island.OnVisibilityChanged -= Island_OnVisibilityChanged;
     }
 }

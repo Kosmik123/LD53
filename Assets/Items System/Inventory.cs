@@ -13,8 +13,14 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     private int capacity;
-    public int Capacity => capacity;
-
+    public int Capacity
+    {
+        get => capacity;
+        set
+        {
+            capacity = value;
+        }
+    }
     private void Awake()
     {
         if (Instance == null)

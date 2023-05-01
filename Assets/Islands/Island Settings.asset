@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MinCellsCount>k__BackingField: 3
   <MaxCellsCount>k__BackingField: 10
-  <MaxIslandRadius>k__BackingField: 5
+  <MaxIslandRadius>k__BackingField: 8
   <MinCellRadius>k__BackingField: 1
   <MaxCellRadius>k__BackingField: 4
   <MinCellGrassRelativeRadius>k__BackingField: 0.4

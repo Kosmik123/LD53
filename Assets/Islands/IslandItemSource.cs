@@ -11,6 +11,7 @@ public class IslandItemSource : MonoBehaviour
     public Item Item => item;
     [SerializeField]
     private Island island;
+    public Island Island => island;
     [SerializeField]
     private ProgressLoader progressLoader;
     [SerializeField]
