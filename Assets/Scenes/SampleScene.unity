@@ -6749,6 +6749,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 7097971076795593395, guid: 3a354f61325bdb841ba4ffd021ebee1e, type: 3}
+      propertyPath: ship
+      value: 
+      objectReference: {fileID: 875093435}
     - target: {fileID: 8152907926730101885, guid: 3a354f61325bdb841ba4ffd021ebee1e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
