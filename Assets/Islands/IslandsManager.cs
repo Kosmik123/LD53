@@ -14,6 +14,8 @@ public class IslandsManager : MonoBehaviour
     private Camera viewCamera;
     [SerializeField, Range(0,1)]
     private float spawnIslandProbability;
+    [SerializeField]
+    private PlayerStatsController playerStatsController;
 
     private Dictionary<Vector2Int, Island> islandsByPosition;
 
@@ -34,6 +36,7 @@ public class IslandsManager : MonoBehaviour
             var island = existingIslands[i];
             Vector2Int position = WorldToGrid(island.transform.position);
             islandsByPosition.Add(position, island);
+            playerStatsController.AddIsland(island);
         }
     }
 
@@ -108,6 +111,7 @@ public class IslandsManager : MonoBehaviour
 
         var island = islandsGenerator.GenerateIsland(islandPosition);
         islandsByPosition.Add(position, island);
+        playerStatsController.AddIsland(island);
     }
 
     public Vector2Int WorldToGrid(Vector3 position)
