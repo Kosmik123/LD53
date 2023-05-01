@@ -4,6 +4,7 @@ using UnityEngine;
 public class IslandItemSource : MonoBehaviour
 {
     public event System.Action<Item> OnItemSet;
+    public event System.Action<Item> OnItemCollected;
 
     [SerializeField]
     private Item item;
@@ -64,6 +65,7 @@ public class IslandItemSource : MonoBehaviour
         if (added)
         {
             progressLoader.Progress = 0;
+            OnItemCollected?.Invoke(item);
         }
     }
 

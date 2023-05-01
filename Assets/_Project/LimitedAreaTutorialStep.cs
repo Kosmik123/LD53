@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class LimitedAreaTutorialStep : TutorialStep
 {
@@ -18,10 +19,8 @@ public class LimitedAreaTutorialStep : TutorialStep
     [SerializeField]
     private PlayerInputsChecker playerInputsChecker;
 
-    public override bool IsCompleted()
-    {
-        return playerInputsChecker.HasMovedAllDirections;
-    }
+    [SerializeField]
+    private UnityEvent onBegin;
 
     protected override void OnBegin()
     {
@@ -34,6 +33,8 @@ public class LimitedAreaTutorialStep : TutorialStep
 
         if (tutorialHint != null)
             tutorialHint.SetActive(true);
+
+        onBegin.Invoke();
     }
 
     protected override void OnEnd()

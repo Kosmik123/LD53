@@ -37,7 +37,7 @@ public class ItemBubbleController : MonoBehaviour
         bubbleAnimator.Show();
     }
 
-    private void UnsetDemandedItem()
+    private void UnsetDemandedItem(Item item = null)
     {
         bubbleAnimator.Hide();
         Invoke(nameof(SetNoneItemIcon), 0.15f);

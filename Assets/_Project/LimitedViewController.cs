@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class LimitedViewController : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class LimitedViewController : MonoBehaviour
 
     [SerializeField]
     private new Camera camera;
+    [SerializeField]
+    private ParentConstraint parentConstraint;
 
     [SerializeField]
     private OrthographicCameraZoomController zoomController;
@@ -40,8 +43,20 @@ public class LimitedViewController : MonoBehaviour
         get => movementLimiter.LimitingSize;
     }
 
+    public bool IsFollowingPlayer => parentConstraint.weight == 1;
+
+    public void SetPlayerFollowing(bool follow)
+    {
+        if (follow == IsFollowingPlayer)
+            return;
+
+        StopCoroutine(nameof(ConstrainWeightChangingCo));
+        StartCoroutine(ConstrainWeightChangingCo(follow ? 1 : 0, 1f));
+    }
+
     public void MoveCamera(Vector3 targetPosition, float time = 0)
     {
+        parentConstraint.weight = 0;
         StopCoroutine(nameof(CameraMovementCo));
         this.targetPosition = targetPosition;
         if (time > 0)
@@ -62,7 +77,7 @@ public class LimitedViewController : MonoBehaviour
 
     private void SetCameraOnTarget()
     {
-        camera.transform.position = this.targetPosition;
+        parentConstraint.translationAtRest = targetPosition;
         OnCameraMovementEnded?.Invoke();
     }
 
@@ -73,7 +88,7 @@ public class LimitedViewController : MonoBehaviour
         while (timerProgress < time)
         {
             timerProgress += Time.deltaTime;
-            camera.transform.position = Vector3.Lerp(initialPosition, targetPosition, timerProgress / time);
+            parentConstraint.translationAtRest = Vector3.Lerp(initialPosition, targetPosition, timerProgress / time);
             yield return null;
         }
 
@@ -95,10 +110,30 @@ public class LimitedViewController : MonoBehaviour
         {
             progress += Time.deltaTime * transitionSpeed;
             movementLimiter.LimitingSize = Vector3.Lerp(initialAreaSize, targetAreaSize, progress);
-            camera.orthographicSize = Mathf.Lerp(initialCameraSize, targetCameraSize, progress);
+            camera.orthographicSize = Mathf.SmoothStep(initialCameraSize, targetCameraSize, progress);
             yield return null;
         }
         movementLimiter.LimitingSize = targetAreaSize;
         camera.orthographicSize = targetCameraSize;
     }
+
+    private IEnumerator ConstrainWeightChangingCo(float targetWeight, float time)
+    {
+        float progress = 0;
+        float transitionSpeed = 1 / time;
+
+        float initialWeight = parentConstraint.weight;
+        while (progress < 1)
+        {
+            progress += Time.deltaTime * transitionSpeed;
+            parentConstraint.weight = Mathf.Lerp(initialWeight, targetWeight, progress);
+            yield return null;
+        }
+        parentConstraint.weight = targetWeight;
+    }
+
+
+
+
+
 }

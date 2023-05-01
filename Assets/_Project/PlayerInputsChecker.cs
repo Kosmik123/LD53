@@ -2,8 +2,9 @@ using Bipolar.Core.Input;
 using NaughtyAttributes;
 using UnityEngine;
 
-public class PlayerInputsChecker : MonoBehaviour
+public class PlayerInputsChecker : TutorialStepCompletionChecker
 {
+    [System.Flags]
     private enum MovedDirections
     {
         None = 0,
@@ -11,7 +12,10 @@ public class PlayerInputsChecker : MonoBehaviour
         Down = 1 << 1,
         Left = 1 << 2,
         Right = 1 << 3,
-        All = Up | Down | Left | Right,
+        Vertical = Up | Down,
+        Horizontal = Left | Right,
+        All = Vertical | Horizontal,
+        _AdditionalValueForCorrectSerialization = 1 << 31,
     }
 
     [SerializeField]
@@ -26,22 +30,32 @@ public class PlayerInputsChecker : MonoBehaviour
     private Object axisProvider;
     public IAxisInputProvider AxisProvider => axisProvider as IAxisInputProvider;
 
+    [SerializeField]
+    private MovedDirections requiredDirections;
+
     [ShowNonSerializedField, ReadOnly]
     private MovedDirections movedDirections;
-    public bool HasMovedAllDirections => movedDirections == MovedDirections.All;
+    public bool HasMovedAllDirections => movedDirections == requiredDirections;
+    public override bool IsCompleted() => HasMovedAllDirections;
 
     private void Update()
     {
-        float vertical = InputProvider.GetVertical();
-        if (vertical > 0.5f)
-            movedDirections |= MovedDirections.Up;
-        else if (vertical < -0.5f)
-            movedDirections |= MovedDirections.Down;
+        if (InputProvider != null)
+        {
+            float vertical = InputProvider.GetVertical();
+            if (vertical > 0.001f)
+                movedDirections |= MovedDirections.Up;
+            else if (vertical < -0.001f)
+                movedDirections |= MovedDirections.Down;
+        }
 
-        float horizontal = AxisProvider.GetAxis();
-        if (horizontal > 0.5f)
-            movedDirections |= MovedDirections.Right;
-        else if (horizontal < -0.5)
-            movedDirections |= MovedDirections.Left;
+        if (AxisProvider != null)
+        {
+            float horizontal = AxisProvider.GetAxis();
+            if (horizontal > 0.001f)
+                movedDirections |= MovedDirections.Right;
+            else if (horizontal < -0.001f)
+                movedDirections |= MovedDirections.Left;
+        }
     }
 }

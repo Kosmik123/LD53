@@ -94,6 +94,8 @@ MonoBehaviour:
   collisionDetector: {fileID: 6886185119588320080}
   maxWaitDuration: 8
   minWaitDuration: 25
+  shouldCommissionAtStart: 1
+  possibleItems: []
 --- !u!114 &6886185119588320080
 MonoBehaviour:
   m_ObjectHideFlags: 0

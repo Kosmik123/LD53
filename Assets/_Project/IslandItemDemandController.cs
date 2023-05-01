@@ -5,7 +5,7 @@ using UnityEngine;
 public class IslandItemDemandController : MonoBehaviour
 {
     public event System.Action<Item> OnItemDemanded;
-    public event System.Action OnDemandEnded;
+    public event System.Action<Item> OnDemandEnded;
 
     [Header("To Link")]
     [SerializeField]
@@ -19,7 +19,7 @@ public class IslandItemDemandController : MonoBehaviour
     [SerializeField]
     private float minWaitDuration;
     [SerializeField]
-    private bool shouldCommisionAtStart;
+    private bool shouldCommissionAtStart;
 
     [ShowNonSerializedField, ReadOnly]
     private Item demandedItem;
@@ -45,8 +45,8 @@ public class IslandItemDemandController : MonoBehaviour
     {
         possibleItems = new List<Item>(ItemsData.Instance.AllItems);
         possibleItems.Remove(islandItemSource.Item);
-        if (shouldCommisionAtStart)
-            CommisionNextDemand();
+        if (shouldCommissionAtStart)
+            CommissionNextDemand(minWaitDuration: 1);
     }
 
     public void DemandItem(Item item)
@@ -72,10 +72,10 @@ public class IslandItemDemandController : MonoBehaviour
         Inventory.Instance.RemoveItem(demandedItem);
         EndDemand();
 
-        CommisionNextDemand(); 
+        CommissionNextDemand(minWaitDuration); 
     }
 
-    private void CommisionNextDemand()
+    private void CommissionNextDemand(float minWaitDuration)
     {
         float timeToNextDemand = Random.Range(minWaitDuration, maxWaitDuration);
         Invoke(nameof(DemandRandomItem), timeToNextDemand);
@@ -84,8 +84,9 @@ public class IslandItemDemandController : MonoBehaviour
     [Button]
     private void EndDemand()
     {
+        var item = demandedItem;
         demandedItem = null;
-        OnDemandEnded?.Invoke();
+        OnDemandEnded?.Invoke(item);
     }
 
     private void OnDisable()
