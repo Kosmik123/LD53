@@ -8,6 +8,9 @@ public class PlayerStatsController : MonoBehaviour
     public event System.Action<int> OnPointsChanged;
     public event System.Action OnFuelEmpty;
 
+    [SerializeField]
+    private Component[] componentsToDisableAtGameover;
+
     [SerializeField, ReadOnly]
     private int points;
     public int Points => points;
@@ -27,6 +30,9 @@ public class PlayerStatsController : MonoBehaviour
         }
     }
 
+    [SerializeField, Range(0, 1)]
+    private float fuelHealingValue;
+
     [SerializeField, ReadOnly]
     private List<IslandItemDemandController> islands;
 
@@ -43,7 +49,9 @@ public class PlayerStatsController : MonoBehaviour
     {
         fuel -= Time.deltaTime * fuelLoweringSpeed;
         if (fuel <= 0)
+        {
             OnFuelEmpty?.Invoke();
+        }
         fuel = Mathf.Clamp01(fuel);
     }
 
@@ -52,7 +60,8 @@ public class PlayerStatsController : MonoBehaviour
         if (item)
         {
             points++;
-            fuel = 1;
+            fuel += fuelHealingValue;
+            fuelLoweringSpeed *= 1.1f;
             OnPointsChanged?.Invoke(points);
         }
     }
