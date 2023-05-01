@@ -9,7 +9,7 @@ public class ItemSlot : MonoBehaviour
 
     public void SetItemIcon(Item item)
     {
-        if(item.Icon == null)
+        if (item == null)
         {
             itemIcon.Sprite = null;
         }

@@ -21,20 +21,26 @@ public class InventoryUIController : MonoBehaviour
 
     private void OnEnable()
     {
-        inventory.OnItemAdded += Inventory_OnItemAdded;
+        inventory.OnItemAdded += RefreshItems;
+        inventory.OnItemRemoved += RefreshItems;
     }
 
-    private void Inventory_OnItemAdded(Item item)
+    private void RefreshItems(Item item)
     {
-        for (int i = 0; i <= inventory.Items.Count; i++)
+        for (int i = 0; i < inventory.Capacity; i++)
         {
-            itemSlots[i].SetItemIcon(inventory.Items[i]);
+            if (i < inventory.Items.Count)
+                itemSlots[i].SetItemIcon(inventory.Items[i]);
+            else
+                itemSlots[i].SetItemIcon(null);
         }
     }
 
     private void OnDisable()
     {
-        inventory.OnItemAdded -= Inventory_OnItemAdded;
+        inventory.OnItemAdded -= RefreshItems;
+        inventory.OnItemRemoved -= RefreshItems;
+
     }
 
     private void ActiveInventorySlot()
