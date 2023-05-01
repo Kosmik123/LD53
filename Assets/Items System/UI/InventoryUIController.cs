@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryUIController : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
-    [SerializeField] private List <GameObject> itemSlots;
+    [SerializeField] private List <ItemSlot> itemSlots;
     [SerializeField] private int newItemWindowCapacity;
     [SerializeField] private int currentItemWindowCapacity;
 
@@ -26,7 +26,10 @@ public class InventoryUIController : MonoBehaviour
 
     private void Inventory_OnItemAdded(Item item)
     {
-        
+        for (int i = 0; i <= inventory.Items.Count; i++)
+        {
+            itemSlots[i].SetItemIcon(inventory.Items[i]);
+        }
     }
 
     private void OnDisable()

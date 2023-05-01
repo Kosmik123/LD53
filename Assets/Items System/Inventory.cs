@@ -10,6 +10,7 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     private List<Item> items;
+    public List<Item> Items => items;
 
     [SerializeField]
     private int capacity;
@@ -21,6 +22,8 @@ public class Inventory : MonoBehaviour
             capacity = value;
         }
     }
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -31,22 +34,22 @@ public class Inventory : MonoBehaviour
 
     public bool Add(Item item)
     {
-        if (items.Count >= Capacity)
+        if (Items.Count >= Capacity)
             return false;
 
-        items.Add(item);
+        Items.Add(item);
         OnItemAdded?.Invoke(item);
         return true;
     }
 
     public bool HasItem(Item item)
     {
-        return items.Contains(item);
+        return Items.Contains(item);
     }
 
     public bool RemoveItem(Item item)
     {
-        int itemIndex = items.IndexOf(item);
+        int itemIndex = Items.IndexOf(item);
         if (itemIndex < 0)
             return false;
 
@@ -55,8 +58,8 @@ public class Inventory : MonoBehaviour
 
     private bool RemoveItem(int itemIndex)
     {
-        var item = items[itemIndex];
-        items.RemoveAt(itemIndex);
+        var item = Items[itemIndex];
+        Items.RemoveAt(itemIndex);
         OnItemRemoved?.Invoke(item);
         return true;
     }
