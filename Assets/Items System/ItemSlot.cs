@@ -12,10 +12,12 @@ public class ItemSlot : MonoBehaviour
         if (item == null)
         {
             itemIcon.Sprite = null;
+            itemIcon.enabled = false;
         }
         else
         {
             itemIcon.Sprite = item.Icon;
+            itemIcon.enabled = true;
             this.item = item;
         }
     }
