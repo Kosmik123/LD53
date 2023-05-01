@@ -6,30 +6,50 @@ public class InventoryUIController : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
     [SerializeField] private List <GameObject> itemSlots;
-    [SerializeField] private int itemWindowCapacity;
+    [SerializeField] private int newItemWindowCapacity;
     [SerializeField] private int currentItemWindowCapacity;
 
     private void Update()
     {
-        ActiveInventorySlot(itemWindowCapacity);
+        ActiveInventorySlot();
     }
 
     private void Start()
     {
-        ActiveInventorySlot(itemWindowCapacity);
+        ActiveInventorySlot();
     }
 
-    private void ActiveInventorySlot(int itemWindowCapacity)
+    private void OnEnable()
     {
-        itemWindowCapacity = inventory.Capacity;
+        inventory.OnItemAdded += Inventory_OnItemAdded;
+    }
 
-        if (currentItemWindowCapacity != itemWindowCapacity)
+    private void Inventory_OnItemAdded(Item obj)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void OnDisable()
+    {
+        
+    }
+
+    private void ActiveInventorySlot()
+    {
+        newItemWindowCapacity = inventory.Capacity;
+
+        if (currentItemWindowCapacity != newItemWindowCapacity)
         {
-            foreach (var itemSlot in itemSlots)
+            for (int i = 0; i < newItemWindowCapacity; i++)
             {
-                itemSlots[itemWindowCapacity].gameObject.SetActive(true);
-                currentItemWindowCapacity = itemWindowCapacity;
+                itemSlots[i].gameObject.SetActive(true);
             }
+
+            for (int z = newItemWindowCapacity; z < itemSlots.Count; z++)
+            {
+                itemSlots[z].gameObject.SetActive(false);
+            }
+            currentItemWindowCapacity = newItemWindowCapacity;
         }
     }
 }

@@ -23,7 +23,6 @@ public class Inventory : MonoBehaviour
             Destroy(this);
     }
 
-
     public bool Add(Item item)
     {
         if (items.Count >= Capacity)
