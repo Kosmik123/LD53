@@ -21,6 +21,8 @@ public class LimitedAreaTutorialStep : TutorialStep
 
     [SerializeField]
     private UnityEvent onBegin;
+    [SerializeField]
+    private UnityEvent onEnd;
 
     protected override void OnBegin()
     {
@@ -40,10 +42,11 @@ public class LimitedAreaTutorialStep : TutorialStep
     protected override void OnEnd()
     {
         base.OnEnd();
-        //limitedViewController.ZoomEnabled = true;
         limitedViewController.MovementLimited = false;
 
         if (tutorialHint != null)
             tutorialHint.SetActive(false);
+
+        onEnd.Invoke();
     }
 }

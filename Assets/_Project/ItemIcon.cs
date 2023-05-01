@@ -35,6 +35,19 @@ public class ItemIcon : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        loadedImage.enabled = unloadedImage.enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        loadedImage.enabled = unloadedImage.enabled = false;
+    }
+
+
+
+
     private void OnValidate()
     {
         Validate();

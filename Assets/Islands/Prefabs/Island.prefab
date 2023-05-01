@@ -228,6 +228,7 @@ MonoBehaviour:
   itemIcon: {fileID: 3154749153843697728}
   itemSource: {fileID: 6843749665363639078}
   progressLoader: {fileID: 7485183875664360636}
+  itemWindow: {fileID: 6287285357798310450}
 --- !u!114 &4343205438643339586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,6 +341,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86dfdb85563434641bd812489896bd1e, type: 3}
+--- !u!1 &6287285357798310450 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7570064913035643135, guid: 86dfdb85563434641bd812489896bd1e, type: 3}
+  m_PrefabInstance: {fileID: 4489712067602156237}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &9070812022510833367 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4877211682120647706, guid: 86dfdb85563434641bd812489896bd1e, type: 3}

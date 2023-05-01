@@ -16,7 +16,6 @@ public class IslandCollisionDetector : MonoBehaviour
         }
     }
 
-
     private void OnEnable()
     {
         SubscribeCollisionEvents();

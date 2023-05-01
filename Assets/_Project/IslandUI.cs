@@ -11,6 +11,9 @@ public class IslandUI : MonoBehaviour
     private IslandItemSource itemSource;
     [SerializeField]
     private ProgressLoader progressLoader;
+    [SerializeField]
+    private GameObject itemWindow;
+
 
     private void Awake()
     {
@@ -26,6 +29,8 @@ public class IslandUI : MonoBehaviour
 
     private void Update()
     {
+        if (itemWindow.activeSelf != itemSource.enabled)
+            itemWindow.SetActive(itemSource.enabled);
         itemIcon.Progress = progressLoader.Progress;
     }
 }
