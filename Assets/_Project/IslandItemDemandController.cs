@@ -6,6 +6,7 @@ public class IslandItemDemandController : MonoBehaviour
 {
     public event System.Action<Item> OnItemDemanded;
     public event System.Action<Item> OnDemandEnded;
+    public event System.Action<Item> OnItemCollected;
 
     [Header("To Link")]
     [SerializeField]
@@ -85,9 +86,11 @@ public class IslandItemDemandController : MonoBehaviour
         if (Inventory.Instance.HasItem(demandedItem) == false)
             return;
 
+        var item = demandedItem;
         Inventory.Instance.RemoveItem(demandedItem);
         EndDemand();
-        CommissionNextDemand(minWaitDuration); 
+        CommissionNextDemand(minWaitDuration);
+        OnItemCollected?.Invoke(item);
     }
 
     public void CommissionNextDemand(float minWaitDuration)
