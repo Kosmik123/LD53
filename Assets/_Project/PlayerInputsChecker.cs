@@ -35,7 +35,7 @@ public class PlayerInputsChecker : TutorialStepCompletionChecker
 
     [ShowNonSerializedField, ReadOnly]
     private MovedDirections movedDirections;
-    public bool HasMovedAllDirections => movedDirections == requiredDirections;
+    public bool HasMovedAllDirections => (movedDirections & requiredDirections) >= requiredDirections;
     public override bool IsCompleted() => HasMovedAllDirections;
 
     private void Update()

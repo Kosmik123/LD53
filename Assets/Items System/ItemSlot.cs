@@ -9,6 +9,7 @@ public class ItemSlot : MonoBehaviour
 
     public void SetItemIcon(Item item)
     {
+        this.item = item;
         if (item == null)
         {
             itemIcon.Sprite = null;
@@ -18,7 +19,6 @@ public class ItemSlot : MonoBehaviour
         {
             itemIcon.Sprite = item.Icon;
             itemIcon.enabled = true;
-            this.item = item;
         }
     }
 }

@@ -54,5 +54,6 @@ public class ItemIcon : MonoBehaviour
     {
         loadedImage.fillAmount = progress;
         loadedImage.sprite = unloadedImage.sprite = sprite;
+        loadedImage.enabled = unloadedImage.enabled = enabled;
     }
 }

@@ -49,11 +49,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 365719000108198333, guid: 8582c8ffe2128a44e88502e7d1903e25, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 80
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 365719000108198333, guid: 8582c8ffe2128a44e88502e7d1903e25, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 80
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 365719000108198333, guid: 8582c8ffe2128a44e88502e7d1903e25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -107,6 +107,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 502244579984035195, guid: 8582c8ffe2128a44e88502e7d1903e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1597109462214291875, guid: 8582c8ffe2128a44e88502e7d1903e25, type: 3}
       propertyPath: m_Type
       value: 1
@@ -118,6 +122,10 @@ PrefabInstance:
     - target: {fileID: 1995965453072038060, guid: 8582c8ffe2128a44e88502e7d1903e25, type: 3}
       propertyPath: m_Sprite
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995965453072038060, guid: 8582c8ffe2128a44e88502e7d1903e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3436907043704005976, guid: 8582c8ffe2128a44e88502e7d1903e25, type: 3}
       propertyPath: m_Name
@@ -151,6 +159,10 @@ PrefabInstance:
       propertyPath: sprite
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5995803635102514986, guid: 8582c8ffe2128a44e88502e7d1903e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8582c8ffe2128a44e88502e7d1903e25, type: 3}
 --- !u!1 &7276040607427404567 stripped
@@ -164,7 +176,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 5425686219684365903}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0fca6a0c70be7e4db8f48d039ff7f8d, type: 3}
   m_Name: 

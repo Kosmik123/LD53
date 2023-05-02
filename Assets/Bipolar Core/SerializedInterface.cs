@@ -22,6 +22,7 @@ public class SerializedInterface<T> where T : class
     public static explicit operator SerializedInterface<T>(T obj) => new SerializedInterface<T>(obj);
 }
 
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(SerializedInterface<>))]
 public class SerializedInterfacePropertyDrawer : PropertyDrawer
 {
@@ -33,4 +34,4 @@ public class SerializedInterfacePropertyDrawer : PropertyDrawer
 
     }
 }
-
+#endif
