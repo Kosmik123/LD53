@@ -1,0 +1,3 @@
+[submodule "Assets/BipolarCore"]
+	path = Assets/BipolarCore
+	url = https://github.com/Kosmik123/Bipolar-Core.git
